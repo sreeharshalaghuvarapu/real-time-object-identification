@@ -17,15 +17,15 @@ function draw() {
     {
         objectDetector.detect(video,gotResult);
         for (i = 0; i < object.length; i++) {
-            document.getElementById("status").innerHTML = "status : objects detected";
-            document.getElementById("number_of_ objects").innerHTML = "number of objects dected are :"+ object.length;
+            document.getElementById("status").innerHTML = "status : object detected";
+            document.getElementById("number_of_object").innerHTML = "number of object dected are :"+ object.length;
 
             fill("#FF0000")
-            percent = floor(objects[i].confidence * 100)
-            text (objects[i].label + " "  + percent + "%", objects[i].x + 15, objects[i].y + 15);
+            percent = floor(object[i].confidence * 100)
+            text (object[i].label + " "  + percent + "%", object[i].x + 15, object[i].y + 15);
             noFill()
             stroke("#FF0000");
-            rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height,)
+            rect(object[i].x, object[i].y, object[i].width, object[i].height)
         }
 
     }
@@ -34,7 +34,7 @@ function draw() {
                 console.log(error);
             }
                 console.log(results);
-                objects = results;
+                object = results;
         }
    
     
@@ -43,7 +43,7 @@ function draw() {
 function start()
 {
     objectDetector = ml5.objectDetector('cocossd',modelLoded);
-    document.getElementById("status").innerHTML = "status : detecting objects";
+    document.getElementById("status").innerHTML = "status : detecting object";
 }
 
 function modelLoded() {
